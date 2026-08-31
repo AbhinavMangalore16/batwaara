@@ -71,7 +71,7 @@ export function Hero() {
           href="#features"
           className="rounded-xl border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/10 cursor-pointer font-space inline-block"
         >
-          See Demo
+          See Features
         </a>
       </div>
 

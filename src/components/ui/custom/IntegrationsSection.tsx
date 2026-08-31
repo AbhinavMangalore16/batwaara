@@ -82,9 +82,6 @@ export function IntegrationsSection() {
                 alt="Batwaara"
                 className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
               />
-              <div className="absolute -bottom-2.5 px-2.5 py-0.5 bg-emerald-500 text-slate-950 text-[10px] font-mono font-bold rounded-full shadow-md uppercase tracking-wider">
-                Batwaara Pay
-              </div>
             </motion.div>
 
             {/* Satellite Payment App Tiles */}

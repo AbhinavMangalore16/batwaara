@@ -44,7 +44,7 @@ export const SkeletonOne = () => {
 export const SkeletonThree = () => {
     return (
         <a
-            href="https://youtu.be/La4F7RDVMRw"
+            href="https://youtu.be/z4NXXb7zIrM"
             target="__blank"
             rel="noopener noreferrer"
             className="relative flex gap-10 h-full group/image overflow-hidden rounded-xl border border-white/10 shadow-2xl block"
@@ -56,12 +56,12 @@ export const SkeletonThree = () => {
                     </div>
 
                     <img
-                        src="https://img.youtube.com/vi/La4F7RDVMRw/maxresdefault.jpg"
+                        src="https://img.youtube.com/vi/z4NXXb7zIrM/maxresdefault.jpg"
                         alt="Batwaara Product Showcase Video"
                         width={800}
                         height={450}
                         onError={(e) => {
-                            (e.target as HTMLImageElement).src = "/batwara-product.png";
+                            (e.target as HTMLImageElement).src = "https://img.youtube.com/vi/z4NXXb7zIrM/hqdefault.jpg";
                         }}
                         className="h-full w-full object-cover object-center rounded-lg filter contrast-110 brightness-90 group-hover/image:brightness-105 group-hover/image:scale-105 transition-all duration-300"
                     />

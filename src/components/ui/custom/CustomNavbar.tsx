@@ -60,14 +60,14 @@ export const CustomNavbar = () => {
               <div className="flex items-center gap-4">
                 <Link
                   href="/dashboard"
-                  className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 font-mono transition-colors"
+                  className="text-sm font-bold text-emerald-400 hover:text-emerald-300 tracking-wide px-3.5 py-2 rounded-xl bg-emerald-950/40 border border-emerald-500/30 transition-all hover:bg-emerald-900/50"
                 >
                   Dashboard
                 </Link>
                 <UserButton
                   appearance={{
                     elements: {
-                      userButtonAvatarBox: "w-9 h-9 border-2 border-emerald-500/30 hover:border-emerald-400 transition-colors",
+                      userButtonAvatarBox: "w-10 h-10 border-2 border-emerald-500/40 hover:border-emerald-400 transition-colors",
                     },
                   }}
                 />
@@ -75,12 +75,12 @@ export const CustomNavbar = () => {
             ) : (
               <div className="flex items-center gap-3">
                 <SignInButton mode="modal">
-                  <button className="px-4 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors cursor-pointer font-sans">
+                  <button className="px-4 py-2 text-sm font-medium text-neutral-200 hover:text-white transition-colors cursor-pointer font-sans">
                     Sign In
                   </button>
                 </SignInButton>
                 <SignUpButton mode="modal">
-                  <button className="px-4 py-2 text-sm font-semibold text-slate-900 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-lg hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-200 cursor-pointer font-sans">
+                  <button className="px-4 py-2 text-sm font-semibold text-slate-950 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-lg hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-200 cursor-pointer font-space">
                     Get Started
                   </button>
                 </SignUpButton>
@@ -152,4 +152,4 @@ export const CustomNavbar = () => {
       </Navbar>
     </div>
   );
-};
+};

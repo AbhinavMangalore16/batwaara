@@ -20,19 +20,26 @@ export async function uploadReceiptToSupabaseStorage(
         upsert: true,
       });
 
-    if (error) {
-      console.warn('Supabase storage upload notice:', error.message);
-      // Fallback object URL if storage bucket is not configured yet
-      return typeof window !== 'undefined' ? URL.createObjectURL(file) : '';
+    if (!error && data) {
+      const { data: publicUrlData } = supabase.storage
+        .from('receipts')
+        .getPublicUrl(filePath);
+
+      if (publicUrlData?.publicUrl) {
+        return publicUrlData.publicUrl;
+      }
     }
-
-    const { data: publicUrlData } = supabase.storage
-      .from('receipts')
-      .getPublicUrl(filePath);
-
-    return publicUrlData.publicUrl;
   } catch (err) {
-    console.error('Failed to upload receipt to Supabase storage:', err);
-    return typeof window !== 'undefined' ? URL.createObjectURL(file) : '';
+    console.warn('Supabase storage upload notice:', err);
   }
+
+  // Fallback: Convert to Base64 Data URL so the receipt image is ALWAYS preserved and rendered cleanly in DB!
+  return new Promise<string>((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      resolve((reader.result as string) || '');
+    };
+    reader.onerror = () => resolve('');
+    reader.readAsDataURL(file);
+  });
 }

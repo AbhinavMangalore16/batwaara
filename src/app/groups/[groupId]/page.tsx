@@ -961,13 +961,22 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ groupId
                       </div>
 
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center flex-wrap gap-2">
                           <h3 className="font-bold text-base text-white font-space">
                             {expense.description}
                           </h3>
                           <span className="px-2 py-0.5 bg-slate-800 border border-white/10 rounded text-[10px] font-mono text-slate-400 uppercase">
                             {expense.split_type}
                           </span>
+                          {expense.receipt_url && (
+                            <button
+                              type="button"
+                              onClick={() => setViewReceiptUrl(expense.receipt_url!)}
+                              className="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 rounded text-[10px] font-mono font-bold flex items-center gap-1 transition-colors cursor-pointer"
+                            >
+                              <Receipt className="w-3 h-3 text-emerald-400" /> Receipt Attached 🧾
+                            </button>
+                          )}
                         </div>
 
                         <div className="text-xs text-slate-400 font-sans flex flex-wrap items-center gap-3">
@@ -981,9 +990,9 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ groupId
                               <span>&bull;</span>
                               <button
                                 onClick={() => setViewReceiptUrl(expense.receipt_url!)}
-                                className="text-emerald-400 hover:underline flex items-center gap-1 font-mono cursor-pointer"
+                                className="text-emerald-400 hover:underline flex items-center gap-1 font-mono cursor-pointer font-bold"
                               >
-                                <Receipt className="w-3.5 h-3.5" /> View Receipt
+                                <Receipt className="w-3.5 h-3.5" /> View Full Receipt
                               </button>
                             </>
                           )}
@@ -1441,13 +1450,13 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ groupId
             </div>
 
             {/* OCR Receipt Upload Box */}
-            <div className="bg-slate-900/80 border-2 border-dashed border-white/10 hover:border-emerald-500/40 rounded-2xl p-4 text-center space-y-2 transition-colors">
+            <div className="bg-slate-900/80 border-2 border-dashed border-white/10 hover:border-emerald-500/40 rounded-2xl p-4 text-center space-y-3 transition-colors">
               <UploadCloud className="w-8 h-8 text-emerald-400 mx-auto" />
               <div className="text-xs font-space font-bold text-slate-200">
                 Scan Receipt Photo (OCR Auto-Fill)
               </div>
               <p className="text-[11px] text-slate-400 font-sans">
-                Drop receipt image here to automatically extract total amount, merchant, and category.
+                Upload or drop receipt image to automatically extract total amount, merchant, and category.
               </p>
               <input
                 type="file"
@@ -1456,12 +1465,43 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ groupId
                 className="hidden"
                 id="receipt-ocr-input"
               />
-              <label
-                htmlFor="receipt-ocr-input"
-                className="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-mono cursor-pointer hover:bg-emerald-500/30 transition-colors"
-              >
-                {isScanningOCR ? 'Scanning Receipt...' : 'Choose Receipt Image'}
-              </label>
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <label
+                  htmlFor="receipt-ocr-input"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-mono cursor-pointer hover:bg-emerald-500/30 transition-colors"
+                >
+                  <Receipt className="w-3.5 h-3.5" />
+                  {isScanningOCR ? 'Scanning Receipt...' : 'Choose Receipt Image'}
+                </label>
+              </div>
+
+              {receiptUrl && (
+                <div className="bg-slate-950 border border-emerald-500/40 rounded-xl p-3 flex items-center justify-between gap-3 text-left">
+                  <div className="flex items-center gap-3 overflow-hidden">
+                    <img src={receiptUrl} alt="Receipt thumbnail" className="w-10 h-10 object-cover rounded-lg border border-white/10 shrink-0" />
+                    <div className="truncate">
+                      <span className="text-xs font-mono font-bold text-emerald-400 block truncate">✓ Receipt Attached</span>
+                      <span className="text-[10px] text-slate-400 font-mono block truncate">Ready to save with expense</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => setViewReceiptUrl(receiptUrl)}
+                      className="px-2.5 py-1 bg-slate-800 text-cyan-300 hover:text-white rounded text-[11px] font-mono border border-cyan-500/30"
+                    >
+                      View
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setReceiptUrl('')}
+                      className="px-2.5 py-1 bg-slate-800 text-rose-300 hover:text-white rounded text-[11px] font-mono border border-rose-500/30"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
             <form onSubmit={handleAddExpenseSubmit} className="space-y-4">
@@ -1901,20 +1941,67 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ groupId
       })()}
 
       {/* VIEW RECEIPT IMAGE MODAL */}
-      {viewReceiptUrl && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
-          <div className="relative max-w-2xl w-full bg-[#0b0f19] border border-white/10 rounded-2xl p-4 text-center">
-            <button
-              onClick={() => setViewReceiptUrl(null)}
-              className="absolute top-3 right-3 text-slate-400 hover:text-white p-1 bg-slate-800 rounded-lg"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <h4 className="text-sm font-mono text-slate-300 mb-4">Scanned Receipt Attachment</h4>
-            <img src={viewReceiptUrl} alt="Receipt" className="max-h-[75vh] mx-auto rounded-xl border border-white/10" />
+      {viewReceiptUrl && (() => {
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
+            <div className="relative max-w-2xl w-full bg-[#0b0f19] border border-white/10 rounded-2xl p-6 text-center space-y-4 shadow-2xl">
+              <button
+                onClick={() => setViewReceiptUrl(null)}
+                className="absolute top-3 right-3 text-slate-400 hover:text-white p-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <div className="flex items-center gap-2 text-emerald-400 font-mono text-sm font-bold">
+                  <Receipt className="w-4 h-4" /> Scanned Receipt Attachment
+                </div>
+                <a
+                  href={viewReceiptUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono text-cyan-400 hover:underline flex items-center gap-1 cursor-pointer"
+                >
+                  Open Full Screen ↗
+                </a>
+              </div>
+
+              <div className="bg-slate-950/80 rounded-xl border border-white/5 p-2 overflow-hidden flex items-center justify-center min-h-[250px] relative">
+                <img
+                  src={viewReceiptUrl}
+                  alt="Receipt Document"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent && !parent.querySelector('.receipt-fallback')) {
+                      const div = document.createElement('div');
+                      div.className = 'receipt-fallback p-8 text-center space-y-3';
+                      div.innerHTML = `
+                        <div class="w-12 h-12 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center mx-auto text-amber-400 font-bold text-xl">⚠️</div>
+                        <p class="text-sm font-mono text-slate-300 font-bold">Temporary Receipt Expired</p>
+                        <p class="text-xs font-sans text-slate-400 max-w-sm mx-auto">This older receipt was stored as a session link that expired. All newly added receipts are now permanently stored as Base64/CDN images.</p>
+                      `;
+                      parent.appendChild(div);
+                    }
+                  }}
+                  className="max-h-[70vh] w-auto mx-auto rounded-xl border border-white/10 object-contain shadow-lg"
+                />
+              </div>
+
+              <div className="pt-2 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setViewReceiptUrl(null)}
+                  className="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono rounded-xl border border-white/10 cursor-pointer"
+                >
+                  Close Receipt
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* DUAL ONBOARDING ADD MEMBER MODAL (OPTION A & OPTION B) */}
       {isAddMemberOpen && (

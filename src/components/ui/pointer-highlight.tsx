@@ -50,13 +50,13 @@ export function PointerHighlight({
       {dimensions.width > 0 && dimensions.height > 0 && (
         <motion.div
           className="pointer-events-none absolute inset-0 z-0"
-          initial={{ opacity: 0, scale: 0.95, originX: 0, originY: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <motion.div
             className={cn(
-              "absolute inset-0 border border-neutral-800 dark:border-neutral-200",
+              "absolute inset-0 border border-emerald-500/60 dark:border-emerald-400/60 rounded-lg shadow-[0_0_15px_rgba(16,185,129,0.2)]",
               rectangleClassName,
             )}
             initial={{
@@ -67,30 +67,32 @@ export function PointerHighlight({
               width: dimensions.width,
               height: dimensions.height,
             }}
+            viewport={{ once: true }}
             transition={{
-              duration: 1,
+              duration: 0.8,
               ease: "easeInOut",
             }}
           />
           <motion.div
             className="pointer-events-none absolute"
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, x: 0, y: 0 }}
             whileInView={{
               opacity: 1,
               x: dimensions.width + 4,
               y: dimensions.height + 4,
             }}
+            viewport={{ once: true }}
             style={{
               rotate: -90,
             }}
             transition={{
               opacity: { duration: 0.1, ease: "easeInOut" },
-              duration: 1,
+              duration: 0.8,
               ease: "easeInOut",
             }}
           >
             <Pointer
-              className={cn("h-5 w-5 text-blue-500", pointerClassName)}
+              className={cn("h-5 w-5 text-emerald-400", pointerClassName)}
             />
           </motion.div>
         </motion.div>

@@ -260,7 +260,7 @@ export default function DashboardPage() {
               href="/"
               className="text-xs font-semibold text-slate-400 hover:text-white transition-colors flex items-center gap-1 font-space"
             >
-              <Home className="w-3.5 h-3.5" /> Landing Page
+              <Home className="w-3.5 h-3.5" /> Back to Home
             </Link>
             <div className="h-4 w-[1px] bg-white/10" />
             <div className="flex items-center gap-3">

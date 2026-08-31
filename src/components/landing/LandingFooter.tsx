@@ -20,7 +20,11 @@ export function LandingFooter() {
           <a href="#features" className="hover:text-emerald-400 transition-colors">Features</a>
           <a href="#pricing" className="hover:text-emerald-400 transition-colors">Pricing</a>
           <a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors">GitHub</a>
+          <Link href="/privacy" className="hover:text-emerald-400 transition-colors">Privacy</Link>
+          <Link href="/terms" className="hover:text-emerald-400 transition-colors">Terms</Link>
+          <a href="https://github.com/AbhinavMangalore16" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/abhinav-mangalore/" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors">LinkedIn</a>
+          <a href="https://x.com/PhoenixRFTA16" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors">Twitter</a>
         </div>
       </div>
     </footer>

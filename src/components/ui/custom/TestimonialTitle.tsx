@@ -25,11 +25,11 @@ export function TestimonialTitle() {
                 
         {
             text: "trusted",
-            className: "text-blue-500 dark:text-blue-500",
+            className: "text-cyan-400 dark:text-cyan-400",
         },
         {
             text: "customers!",
-            className: "text-blue-500 dark:text-blue-500",
+            className: "text-cyan-400 dark:text-cyan-400",
         },
 
     ]

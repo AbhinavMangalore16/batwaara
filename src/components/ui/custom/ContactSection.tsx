@@ -26,8 +26,11 @@ export function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-12 lg:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            The best way to grow is to <br/> <center><PointerHighlight> collaborate </PointerHighlight></center>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 flex flex-col items-center gap-2">
+            <span>The best way to grow is to</span>
+            <span className="inline-flex justify-center items-center mt-1">
+              <PointerHighlight>collaborate</PointerHighlight>
+            </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             Have questions? We'd love to hear from you. Reach out and let's start a conversation.
@@ -37,7 +40,7 @@ export function ContactSection() {
         {/* Contact Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left: Contact Info & Map */}
-          
+
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -55,7 +58,7 @@ export function ContactSection() {
                 <div>
                   <h3 className="text-white font-semibold mb-1">Email</h3>
                   <a href="mailto:hello@batwara.com" className="text-slate-400 hover:text-emerald-400 transition-colors">
-                    collab@batwara.com
+                    abhinavm16104@gmail.com
                   </a>
                 </div>
               </div>
@@ -82,9 +85,9 @@ export function ContactSection() {
                   <h3 className="text-white font-semibold mb-1">Location</h3>
                   <p className="text-slate-400">
                     D3.
-                    Redwood, <br/>
-                    Manayata Tech Park, <br/>
-                    Nagavara, Bengaluru,<br/>
+                    Redwood, <br />
+                    Manayata Tech Park, <br />
+                    Nagavara, Bengaluru,<br />
                     Karnataka-560045
                   </p>
                 </div>
@@ -110,22 +113,28 @@ export function ContactSection() {
               <h3 className="text-white font-semibold mb-4">Follow Us</h3>
               <div className="flex gap-3">
                 <a
-                  href="#"
-                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all border border-white/5"
-                  aria-label="Twitter"
+                  href="https://x.com/PhoenixRFTA16"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all border border-white/5 cursor-pointer"
+                  aria-label="Twitter / X"
                 >
                   <IconBrandTwitter className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
-                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500/20 hover:text-cyan-400 transition-all border border-white/5"
+                  href="https://www.linkedin.com/in/abhinav-mangalore/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500/20 hover:text-cyan-400 transition-all border border-white/5 cursor-pointer"
                   aria-label="LinkedIn"
                 >
                   <IconBrandLinkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
-                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all border border-white/5"
+                  href="https://github.com/AbhinavMangalore16"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-emerald-500/20 hover:text-emerald-400 transition-all border border-white/5 cursor-pointer"
                   aria-label="GitHub"
                 >
                   <IconBrandGithub className="w-5 h-5" />
@@ -135,8 +144,8 @@ export function ContactSection() {
           </motion.div>
 
           {/* Right: Contact Form */}
-          <ContactForm/>
-        
+          <ContactForm />
+
         </div>
 
         {/* FAQ or CTA */}
@@ -148,7 +157,7 @@ export function ContactSection() {
           className="mt-12 lg:mt-16 text-center"
         >
           <p className="text-slate-400 mb-4">
-            Prefer to chat? Check our <a href="#faq" className="text-emerald-400 hover:text-emerald-300 transition-colors">FAQ</a> or email us directly at support@batwara.com
+            Prefer to chat? Check our <a href="#faq" className="text-emerald-400 hover:text-emerald-300 transition-colors">FAQ</a> or email us directly at abhinavm16104@gmail.com
           </p>
         </motion.div>
       </div>
