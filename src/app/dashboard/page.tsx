@@ -72,7 +72,7 @@ export default function DashboardPage() {
             full_name: user.fullName || user.firstName || 'User',
             avatar_url: user.imageUrl || null,
           });
-        } catch {}
+        } catch { }
       }
 
       // 2. Fetch groups from Supabase
@@ -99,7 +99,7 @@ export default function DashboardPage() {
             }
           }
         }
-      } catch {}
+      } catch { }
 
       setGroups(fetchedGroups);
 
@@ -179,7 +179,7 @@ export default function DashboardPage() {
           full_name: user.fullName || user.firstName || 'User',
           avatar_url: user.imageUrl || null,
         });
-      } catch {}
+      } catch { }
 
       const { group } = await createGroup(
         newGroupName.trim(),
@@ -196,7 +196,7 @@ export default function DashboardPage() {
             guest_name: memberName,
             role: 'member',
           });
-        } catch {}
+        } catch { }
       }
 
       setIsModalOpen(false);
@@ -248,9 +248,9 @@ export default function DashboardPage() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2 group">
-              <img src="/batwara-logo.png" alt="Batwara Logo" className="w-8 h-8 object-contain" />
+              <img src="/batwara-logo.png" alt="Batwaara Logo" className="w-8 h-8 object-contain" />
               <span className="font-bold text-lg text-white font-space group-hover:text-emerald-400 transition-colors">
-                Batwara <span className="text-xs text-emerald-400 font-mono font-normal">Hub</span>
+                Batwaara <span className="text-xs text-emerald-400 font-mono font-normal">Hub</span>
               </span>
             </Link>
           </div>

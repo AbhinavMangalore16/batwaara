@@ -48,15 +48,15 @@ export default function LandingPage() {
             Frequently asked questions
           </h3>
           <p className="mt-2 text-center text-slate-400 max-w-2xl mx-auto">
-            Common questions about Batwara — how it works, privacy, and settlements.
+            Common questions about Batwaara — how it works, privacy, and settlements.
           </p>
 
           <div className="mt-8">
             <Accordion type="multiple" className="space-y-4">
               <AccordionItem value="q-1" className="bg-slate-900/60 backdrop-blur-md rounded-2xl border border-white/10 shadow-lg">
-                <AccordionTrigger className="px-6 text-white hover:text-emerald-400 font-semibold">How does Batwara split bills?</AccordionTrigger>
+                <AccordionTrigger className="px-6 text-white hover:text-emerald-400 font-semibold">How does Batwaara split bills?</AccordionTrigger>
                 <AccordionContent className="px-6">
-                  <p className="text-sm text-slate-300">Create a group, add expenses with participants, and Batwara computes the net balances between members. We then offer minimal settlement suggestions so everyone pays as little as possible.</p>
+                  <p className="text-sm text-slate-300">Create a group, add expenses with participants, and Batwaara computes the net balances between members. We then offer minimal settlement suggestions so everyone pays as little as possible.</p>
                   <p className="mt-3 text-sm text-slate-400">You can mark expenses as shared equally, by percentage, or assign per-person amounts. Export settlements or send payment links directly to participants.</p>
                 </AccordionContent>
               </AccordionItem>
@@ -65,7 +65,7 @@ export default function LandingPage() {
                 <AccordionTrigger className="px-6 text-white hover:text-emerald-400 font-semibold">How fast are settlements?</AccordionTrigger>
                 <AccordionContent className="px-6">
                   <p className="text-sm text-slate-300">Settlement calculations are instantaneous. Once expenses are saved, the app computes optimized transfers immediately.</p>
-                  <p className="mt-3 text-sm text-slate-400">For actual money transfers, Batwara can generate payment links (UPI, Stripe) or provide a minimal pay list you can use with your preferred payment app.</p>
+                  <p className="mt-3 text-sm text-slate-400">For actual money transfers, Batwaara can generate payment links (UPI, Stripe) or provide a minimal pay list you can use with your preferred payment app.</p>
                 </AccordionContent>
               </AccordionItem>
 
@@ -80,7 +80,7 @@ export default function LandingPage() {
               <AccordionItem value="q-4" className="bg-slate-900/60 backdrop-blur-md rounded-2xl border border-white/10 shadow-lg">
                 <AccordionTrigger className="px-6 text-white hover:text-emerald-400 font-semibold">What payment methods are supported?</AccordionTrigger>
                 <AccordionContent className="px-6">
-                  <p className="text-sm text-slate-300">Batwara supports common regional payment links and integrations depending on availability: UPI (India), Stripe/ACH, and direct payment links. Support depends on your region and enabled integrations.</p>
+                  <p className="text-sm text-slate-300">Batwaara supports common regional payment links and integrations depending on availability: UPI (India), Stripe/ACH, and direct payment links. Support depends on your region and enabled integrations.</p>
                   <p className="mt-3 text-sm text-slate-400">If you need additional integrations, contact our support and we can prioritize connectors.</p>
                 </AccordionContent>
               </AccordionItem>

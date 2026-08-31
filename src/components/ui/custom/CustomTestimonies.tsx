@@ -1,11 +1,11 @@
 import { AnimatedTestimonials } from "../animated-testimonials";
 import { TestimonialTitle } from "./TestimonialTitle";
 
-export const CustomTestimonies = () =>{
-const testimonials = [
+export const CustomTestimonies = () => {
+  const testimonials = [
     {
       quote:
-        "Living with 3 others used to mean endless 'who paid for milk?' texts. Batwara just handles it. We don't even talk about money anymore, we just settle up.",
+        "Living with 3 others used to mean endless 'who paid for milk?' texts. Batwaara just handles it. We don't even talk about money anymore, we just settle up.",
       name: "Rohan & Flatmates",
       designation: "Students, Mumbai",
       src: "https://i.pinimg.com/474x/48/f9/3b/48f93b19a6d6b18a83d2fa41b14e417d.jpg",
@@ -41,7 +41,7 @@ const testimonials = [
   ];
   return (
     <div>
-      <AnimatedTestimonials testimonials={testimonials} autoplay/>
+      <AnimatedTestimonials testimonials={testimonials} autoplay />
     </div>
-)
+  )
 }

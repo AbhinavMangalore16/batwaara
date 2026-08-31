@@ -721,7 +721,7 @@ export function FeaturesSection() {
                     Packed with powerful features
                 </h4>
                 <p className="text-base lg:text-lg max-w-3xl my-4 mx-auto text-slate-400 text-center font-normal">
-                    Batwara simplifies group expenses with real-time tracking, AI-optimized settlements, and total transparency.
+                    Batwaara simplifies group expenses with real-time tracking, AI-optimized settlements, and total transparency.
                 </p>
             </div>
 

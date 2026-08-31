@@ -49,7 +49,7 @@ export function Hero() {
         </Highlight>
       </h2>
       <p className="relative z-20 w-full px-6 py-8 text-center text-sm text-neutral-200 md:text-base">
-        Batwara handles the math so you can focus on the moment.
+        Batwaara handles the math so you can focus on the moment.
       </p>
 
       <div className="relative z-30 pointer-events-auto flex flex-wrap items-center justify-center gap-4 pt-4">

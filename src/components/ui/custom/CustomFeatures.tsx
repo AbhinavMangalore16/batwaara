@@ -35,38 +35,38 @@ export function CustomFeatures() {
         {
             title: "Explore More, Worry Less",
             description:
-                "Whether you’re traveling with friends or chilling at home, Batwara keeps every shared expense perfectly balanced in real time.",
+                "Whether you’re traveling with friends or chilling at home, Batwaara keeps every shared expense perfectly balanced in real time.",
             skeleton: <SkeletonFour />,
             className: "col-span-1 lg:col-span-3 border-b lg:border-none",
         },
         {
-    title: "Settle Smarter, Not Harder",
-    description:
-        "Batwara computes the most efficient settlement path, reducing messy payment chains into clean, minimal transactions.",
-    skeleton: <SkeletonFive />,
-    className: "col-span-1 lg:col-span-3 border-b lg:border-r dark:border-neutral-800",
-},
-{
-    title: "Know Where You Stand, Instantly",
-    description:
-        "Your Dashboard updates live for every group—showing what you owe, what others owe you, and every upcoming settlement.",
-    skeleton: <SkeletonSix />,
-    className: "col-span-1 lg:col-span-3 border-b dark:border-neutral-800",
-},
-{
-    title: "Fewer Payments. Faster Settlements.",
-    description:
-        "Batwara automatically collapses debts so your group settles with the fewest number of payments possible.",
-    skeleton: <SkeletonSeven />,
-    className: "col-span-1 lg:col-span-4 border-b lg:border-none dark:border-neutral-800",
-},
-{
-    title: "Every Split Logged. Every Moment Clear.",
-    description:
-        "From dinners to trips, Batwara keeps a transparent timeline of all splits, updates, and settlements across your groups.",
-    skeleton: <SkeletonEight />,
-    className: "col-span-1 lg:col-span-2 dark:border-neutral-800",
-},
+            title: "Settle Smarter, Not Harder",
+            description:
+                "Batwaara computes the most efficient settlement path, reducing messy payment chains into clean, minimal transactions.",
+            skeleton: <SkeletonFive />,
+            className: "col-span-1 lg:col-span-3 border-b lg:border-r dark:border-neutral-800",
+        },
+        {
+            title: "Know Where You Stand, Instantly",
+            description:
+                "Your Dashboard updates live for every group—showing what you owe, what others owe you, and every upcoming settlement.",
+            skeleton: <SkeletonSix />,
+            className: "col-span-1 lg:col-span-3 border-b dark:border-neutral-800",
+        },
+        {
+            title: "Fewer Payments. Faster Settlements.",
+            description:
+                "Batwaara automatically collapses debts so your group settles with the fewest number of payments possible.",
+            skeleton: <SkeletonSeven />,
+            className: "col-span-1 lg:col-span-4 border-b lg:border-none dark:border-neutral-800",
+        },
+        {
+            title: "Every Split Logged. Every Moment Clear.",
+            description:
+                "From dinners to trips, Batwaara keeps a transparent timeline of all splits, updates, and settlements across your groups.",
+            skeleton: <SkeletonEight />,
+            className: "col-span-1 lg:col-span-2 dark:border-neutral-800",
+        },
 
     ];
     return (

@@ -1111,20 +1111,39 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ groupId
                 const fromName = tx.fromMember.profile?.full_name || tx.fromMember.guest_name || 'Member';
                 const toName = tx.toMember.profile?.full_name || tx.toMember.guest_name || 'Member';
 
+                const currentMember = members.find((m) => m.user_id === user?.id);
+                const currentMemberId = currentMember?.id;
+
+                const isMyTurnToPay = Boolean(
+                  user &&
+                  (
+                    (tx.fromMember.user_id && tx.fromMember.user_id === user.id) ||
+                    (currentMemberId && tx.fromMember.id === currentMemberId) ||
+                    (unclaimedProfile && tx.fromMember.id === unclaimedProfile.id)
+                  )
+                );
+
                 return (
                   <div
                     key={idx}
-                    className="bg-slate-900/80 backdrop-blur-md border border-white/10 hover:border-emerald-500/30 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all"
+                    className={`bg-slate-900/80 border rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all ${
+                      isMyTurnToPay ? 'border-emerald-500/40 bg-emerald-950/10' : 'border-white/10'
+                    }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center font-bold text-rose-400 font-mono">
                         {fromName.charAt(0)}
                       </div>
 
-                      <div className="font-space">
+                      <div className="font-space flex items-center flex-wrap gap-1">
                         <span className="font-bold text-white text-base">{fromName}</span>
-                        <span className="text-slate-400 text-xs mx-2">pays</span>
+                        <span className="text-slate-400 text-xs mx-1">pays</span>
                         <span className="font-bold text-emerald-400 text-base">{toName}</span>
+                        {isMyTurnToPay && (
+                          <span className="ml-2 px-2 py-0.5 text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-full font-mono font-bold">
+                            Your Turn to Pay
+                          </span>
+                        )}
                       </div>
                     </div>
 
@@ -1133,17 +1152,27 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ groupId
                         {tx.currency} {tx.amount.toFixed(2)}
                       </div>
 
-                      <button
-                        onClick={() => {
-                          setSettlingTransaction(tx);
-                          const defaultUpi = tx.toMember.upi_id || `${toName.toLowerCase().replace(/[^a-z0-9]/g, '')}@upi`;
-                          setPayeeUpiId(defaultUpi);
-                          setShowQrCode(false);
-                        }}
-                        className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold rounded-xl text-xs font-space hover:shadow-lg hover:shadow-emerald-500/20 transition-all cursor-pointer flex items-center gap-1.5"
-                      >
-                        <Zap className="w-3.5 h-3.5 stroke-[2.5]" /> Settle Up (UPI)
-                      </button>
+                      {isMyTurnToPay ? (
+                        <button
+                          onClick={() => {
+                            setSettlingTransaction(tx);
+                            const defaultUpi = tx.toMember.upi_id || `${toName.toLowerCase().replace(/[^a-z0-9]/g, '')}@upi`;
+                            setPayeeUpiId(defaultUpi);
+                            setShowQrCode(false);
+                          }}
+                          className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold rounded-xl text-xs font-space hover:shadow-lg hover:shadow-emerald-500/20 transition-all cursor-pointer flex items-center gap-1.5"
+                        >
+                          <Zap className="w-3.5 h-3.5 stroke-[2.5]" /> Settle Up (UPI)
+                        </button>
+                      ) : (
+                        <button
+                          disabled
+                          title={`Only ${fromName} can settle this payment.`}
+                          className="px-4 py-2 bg-slate-800/80 border border-white/10 text-slate-400 font-medium rounded-xl text-xs font-space opacity-50 cursor-not-allowed flex items-center gap-1.5"
+                        >
+                          <Zap className="w-3.5 h-3.5 opacity-40" /> Waiting for {fromName}
+                        </button>
+                      )}
                     </div>
                   </div>
                 );
